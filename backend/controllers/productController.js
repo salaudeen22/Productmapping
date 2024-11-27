@@ -6,12 +6,12 @@ exports.createProduct = async (req, res) => {
     // console.log(req.body);
 
     const { standardized_name, variations, status } = req.body;
-    const generatedVariations = generateVariations(standardized_name);
-    console.log(generatedVariations);
-    const allVariations = [...variations, ...generatedVariations];
+    // const generatedVariations = generateVariations(standardized_name);
+    // console.log(generatedVariations);
+    // const allVariations = [...variations, ...generatedVariations];
     const product = new Product({
       standardized_name,
-      variations: allVariations,
+      variations: variations,
       status: status || "unmatched" 
     });
    
@@ -23,43 +23,43 @@ exports.createProduct = async (req, res) => {
   }
 };
 
-const generateVariations = (standardizedName) => {
-  const name = standardizedName.toLowerCase();
-  const variations = new Set();
+// const generateVariations = (standardizedName) => {
+//   const name = standardizedName.toLowerCase();
+//   const variations = new Set();
   
 
-  variations.add(name);
+//   variations.add(name);
   
 
-  variations.add(name.replace(/\s+/g, ''));
+//   variations.add(name.replace(/\s+/g, ''));
   
 
-  variations.add(name.replace(/\s+/g, ' ').trim());
+//   variations.add(name.replace(/\s+/g, ' ').trim());
 
  
-  const chars = name.split('');
-  for (let i = 0; i < 5; i++) {
-    let shuffled = [...chars];
-    for (let j = shuffled.length - 1; j > 0; j--) {
-      const k = Math.floor(Math.random() * (j + 1));
-      [shuffled[j], shuffled[k]] = [shuffled[k], shuffled[j]];
-    }
-    variations.add(shuffled.join(''));
-  }
+//   const chars = name.split('');
+//   for (let i = 0; i < 5; i++) {
+//     let shuffled = [...chars];
+//     for (let j = shuffled.length - 1; j > 0; j--) {
+//       const k = Math.floor(Math.random() * (j + 1));
+//       [shuffled[j], shuffled[k]] = [shuffled[k], shuffled[j]];
+//     }
+//     variations.add(shuffled.join(''));
+//   }
 
-  const words = name.split(/\s+/);
-  for (let i = 0; i < 5; i++) { 
-    let shuffledWords = [...words];
-    for (let j = shuffledWords.length - 1; j > 0; j--) {
-      const k = Math.floor(Math.random() * (j + 1));
-      [shuffledWords[j], shuffledWords[k]] = [shuffledWords[k], shuffledWords[j]];
-    }
-    variations.add(shuffledWords.join(' '));
-    variations.add(shuffledWords.join('')); 
-  }
+//   const words = name.split(/\s+/);
+//   for (let i = 0; i < 5; i++) { 
+//     let shuffledWords = [...words];
+//     for (let j = shuffledWords.length - 1; j > 0; j--) {
+//       const k = Math.floor(Math.random() * (j + 1));
+//       [shuffledWords[j], shuffledWords[k]] = [shuffledWords[k], shuffledWords[j]];
+//     }
+//     variations.add(shuffledWords.join(' '));
+//     variations.add(shuffledWords.join('')); 
+//   }
 
-  return Array.from(variations);
-}
+//   return Array.from(variations);
+// }
 
 
 exports.getProductByVariation = async (req, res) => {

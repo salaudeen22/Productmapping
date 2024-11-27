@@ -70,7 +70,7 @@ const ManualMapping = () => {
       });
     }
 
-    console.log(topMatches);
+    // console.log(topMatches);
   };
 
   const confirmMatch = async () => {
@@ -94,7 +94,7 @@ const ManualMapping = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:3999/api/products/${selectedMatch.product._id}`,
+        `http://localhost:2999/api/products/${selectedMatch.product._id}`,
         {
           method: "PUT",
           headers: {
@@ -103,6 +103,7 @@ const ManualMapping = () => {
           body: JSON.stringify({
             standardized_name: selectedMatch.product.standardized_name,
             variations: [...selectedMatch.product.variations, inputProduct],
+            status: "mapped"
           }),
         }
       );
@@ -132,7 +133,7 @@ const ManualMapping = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <h1 className="text-3xl font-bold mb-8">Product Name Matcher</h1>
+     
 
       <div className="space-y-6">
         <div>
