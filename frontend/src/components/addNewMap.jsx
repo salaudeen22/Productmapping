@@ -1,10 +1,20 @@
 import { useState } from "react";
+import Swal from 'sweetalert2';
 
 function AddNewMap({onClose}) {
   const [supplierName, setSupplierName] = useState('');
   const [standardizedName, setStandardizedName] = useState('');
 
   const handleSubmit = async () => {
+    if (!supplierName.trim() || !standardizedName.trim()) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Warning',
+        text: 'Please fill in both fields'
+      });
+      return;
+    }
+
     try {
       const response = await fetch('http://localhost:3999/api/products', {
         method: 'POST',
@@ -18,10 +28,22 @@ function AddNewMap({onClose}) {
       });
 
       if (response.ok) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'New mapping created successfully'
+        });
         onClose();
+      } else {
+        throw new Error('Failed to create product');
       }
     } catch (error) {
       console.error('Error creating product:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Failed to create new mapping'
+      });
     }
   };
 
