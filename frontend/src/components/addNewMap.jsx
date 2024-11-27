@@ -16,14 +16,15 @@ function AddNewMap({onClose}) {
     }
 
     try {
-      const response = await fetch('http://localhost:3999/api/products', {
+      const response = await fetch('http://localhost:2999/api/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           standardized_name: standardizedName,
-          variations: [supplierName]
+          variations: [supplierName],
+          status: "unmatched"
         })
       });
 

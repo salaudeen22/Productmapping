@@ -15,7 +15,7 @@ const ManualMapping = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:3999/api/products");
+      const response = await fetch("http://localhost:2999/api/products");
       const data = await response.json();
       setProducts(data);
     } catch (error) {

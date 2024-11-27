@@ -3,14 +3,20 @@ const Product = require('../model/productModel');
 
 exports.createProduct = async (req, res) => {
   try {
-    const { standardized_name, variations } = req.body;
+    // console.log(req.body);
+
+    const { standardized_name, variations, status } = req.body;
     const generatedVariations = generateVariations(standardized_name);
+    console.log(generatedVariations);
     const allVariations = [...variations, ...generatedVariations];
     const product = new Product({
       standardized_name,
-      variations: allVariations
+      variations: allVariations,
+      status: status || "unmatched" 
     });
+   
     const savedProduct = await product.save();
+    // console.log("product", savedProduct);
     res.status(201).json(savedProduct);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -85,12 +91,13 @@ exports.getAllProducts = async (req, res) => {
 exports.updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    const { standardized_name, variations } = req.body;
+    const { standardized_name, variations, status } = req.body;
     const updatedProduct = await Product.findByIdAndUpdate(
       id,
       {
         standardized_name,
         variations,
+        status,
         updated_at: Date.now()
       },
       { new: true }
