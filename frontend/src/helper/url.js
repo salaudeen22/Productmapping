@@ -1,0 +1,1 @@
+export  const API_URL = "https://productmapping.onrender.com/api";

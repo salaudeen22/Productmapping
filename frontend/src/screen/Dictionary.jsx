@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import EditDict from "../components/EditDict";
 import AddNewMap from "../components/addNewMap";
-
+import { API_URL } from "../helper/url";
 const Dictionary = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -24,7 +24,7 @@ const Dictionary = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:2999/api/products");
+      const response = await fetch(`${API_URL}/products`);
       const data = await response.json();
       setProducts(data);
       setFilteredProducts(data);
@@ -51,7 +51,7 @@ const Dictionary = () => {
       });
 
       if (result.isConfirmed) {
-        await fetch(`http://localhost:2999/api/products/${id}`, {
+          await fetch(`${API_URL}/products/${id}`, {
           method: 'DELETE'
         });
         fetchProducts();

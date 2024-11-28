@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { API_URL } from "../helper/url";
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
@@ -14,7 +15,7 @@ const Dashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch("http://localhost:2999/api/products");
+    const response = await fetch(`${API_URL}/products`);
       const products = await response.json();
       
       setStats({
