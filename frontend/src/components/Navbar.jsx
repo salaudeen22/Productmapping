@@ -22,6 +22,9 @@ const Navbar = () => {
               <Link to="/dictionary" className="text-gray-700 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                 Dictionary
               </Link>
+              <Link to="/intellgience-map" className="text-gray-700 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                Intellgience Map
+              </Link>
             </div>
           </div>
 

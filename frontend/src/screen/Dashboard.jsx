@@ -28,41 +28,39 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="p-8">
-     
-      
-      <div className="grid grid-cols-3 gap-6 mb-8">
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold mb-2">Total Products</h2>
-          <p className="text-4xl font-bold">{stats.totalProducts}</p>
+    <div className="p-4 md:p-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
+        <div className="bg-white p-4 md:p-6 rounded-lg shadow">
+          <h2 className="text-lg md:text-xl font-semibold mb-2">Total Products</h2>
+          <p className="text-3xl md:text-4xl font-bold">{stats.totalProducts}</p>
         </div>
         
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold mb-2">Unmatched Products</h2>
-          <p className="text-4xl font-bold">{stats.unmatchedProducts}</p>
+        <div className="bg-white p-4 md:p-6 rounded-lg shadow">
+          <h2 className="text-lg md:text-xl font-semibold mb-2">Unmatched Products</h2>
+          <p className="text-3xl md:text-4xl font-bold">{stats.unmatchedProducts}</p>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-xl font-semibold mb-2">Mapped Products</h2>
-          <p className="text-4xl font-bold">{stats.mappedProducts}</p>
+        <div className="bg-white p-4 md:p-6 rounded-lg shadow">
+          <h2 className="text-lg md:text-xl font-semibold mb-2">Mapped Products</h2>
+          <p className="text-3xl md:text-4xl font-bold">{stats.mappedProducts}</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
         <Link 
           to="/manual-mapping"
-          className="bg-blue-500 text-white p-6 rounded-lg shadow hover:bg-blue-600 transition"
+          className="bg-blue-500 text-white p-4 md:p-6 rounded-lg shadow hover:bg-blue-600 transition flex flex-col justify-between"
         >
-          <h2 className="text-xl font-semibold mb-2">Manual Mapping</h2>
-          <p>Map product names manually</p>
+          <h2 className="text-lg md:text-xl font-semibold mb-2">Manual Mapping</h2>
+          <p className="text-sm md:text-base">Map product names manually</p>
         </Link>
 
         <Link
           to="/mapping-dictionary" 
-          className="bg-green-500 text-white p-6 rounded-lg shadow hover:bg-green-600 transition"
+          className="bg-green-500 text-white p-4 md:p-6 rounded-lg shadow hover:bg-green-600 transition flex flex-col justify-between"
         >
-          <h2 className="text-xl font-semibold mb-2">Mapping Dictionary</h2>
-          <p>View and manage all product mappings</p>
+          <h2 className="text-lg md:text-xl font-semibold mb-2">Mapping Dictionary</h2>
+          <p className="text-sm md:text-base">View and manage all product mappings</p>
         </Link>
       </div>
     </div>
