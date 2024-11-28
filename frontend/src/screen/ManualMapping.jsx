@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AddNewMap from "../components/addNewMap";
 import Fuse from "fuse.js";
 import Swal from "sweetalert2";
+import { API_URL } from "../helper/url";
 
 const ManualMapping = () => {
   const [showAddNewMap, setShowAddNewMap] = useState(false);
@@ -15,7 +16,7 @@ const ManualMapping = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch("http://localhost:2999/api/products");
+      const response = await fetch(`${API_URL}/products`);
       const data = await response.json();
       setProducts(data);
     } catch (error) {
@@ -103,7 +104,7 @@ const ManualMapping = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:2999/api/products/${selectedMatch.product._id}`,
+        `${API_URL}/products/${selectedMatch.product._id}`,
         {
           method: "PUT",
           headers: {
